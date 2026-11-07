@@ -11,7 +11,7 @@
 
         <div class="card-body bot-messages-container p-3">
             <div ng-repeat="msg in $ctrl.mensajes" ng-class="{'text-end': msg.emisor === 'usuario', 'text-start': msg.emisor === 'bot'}" class="mb-2">
-                <span class="d-inline-block p-2 rounded text-break" style="max-width: 85%; white-space: pre-line;"
+                <span class="d-inline-block rounded text-break" style="max-width: 85%; white-space: pre-line; padding: 4px 10px !important; margin: 0 !important;"
                     ng-class="{'bg-danger text-white': msg.emisor === 'usuario', 'bg-dark text-light border border-secondary': msg.emisor === 'bot'}">
                     {{msg.texto}}
                 </span>

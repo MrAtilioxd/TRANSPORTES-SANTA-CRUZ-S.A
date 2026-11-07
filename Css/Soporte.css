@@ -254,7 +254,7 @@ main .text-secondary {
     transform: scale(1.08);
 }
 
-.bot-window {
+.bot-window.card-custom {
     position: absolute;
     bottom: 75px;
     right: 0;
@@ -266,12 +266,28 @@ main .text-secondary {
     border: 1px solid var(--sc-border) !important;
     border-radius: var(--sc-radius) !important;
     box-shadow: var(--sc-shadow) !important;
+    padding: 0 !important;
 }
 
 .bot-messages-container {
     flex: 1;
     overflow-y: auto;
     max-height: 330px;
+    background: rgba(14, 17, 22, 0.95);
+    padding: 8px 12px 12px 12px !important;
+}
+
+.bot-messages-container .mb-2 {
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+}
+
+.bot-messages-container span {
+    padding: 6px 12px !important;
+    line-height: 1.35;
+    font-size: 0.9rem;
+    display: inline-block !important;
+    margin-top: 0 !important;
 }
 
 .footer-usmp {
@@ -382,7 +398,7 @@ main .text-secondary {
         letter-spacing: 2px;
     }
 
-    .bot-window {
+    .bot-window.card-custom {
         width: 300px;
         height: 400px;
         right: -10px;

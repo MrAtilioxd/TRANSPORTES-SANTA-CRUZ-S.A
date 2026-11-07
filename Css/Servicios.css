@@ -6,6 +6,8 @@
     --sc-red: #d32f2f;
     --sc-red-dark: #9a1f1f;
     --sc-gold: #ffc107;
+    --sc-green: #1b5e20;
+    --sc-purple: #6a1b9a;
     --sc-text: #e8ecf1;
     --sc-muted: #9aa5b1;
     --sc-radius: 16px;
@@ -35,6 +37,10 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+a {
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .main-header {
@@ -164,60 +170,122 @@ main {
     color: #fff;
 }
 
-.card-custom {
-    background: var(--sc-card);
-    border: 1px solid var(--sc-border);
-    border-radius: var(--sc-radius);
-    box-shadow: var(--sc-shadow);
-    padding: 2.5rem !important;
+main.container-fluid {
+    width: 100%;
+    max-width: none;
+    padding: 2.5rem 2rem 3rem;
 }
 
-.titulo-seccion {
+main h2 {
     font-weight: 800;
     letter-spacing: 1.5px;
     color: #fff !important;
     position: relative;
     display: inline-block;
-    padding-bottom: 10px;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    padding-bottom: 12px;
 }
 
-.titulo-seccion::after {
+main h2::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
     width: 70px;
     height: 4px;
     border-radius: 4px;
     background: linear-gradient(90deg, var(--sc-red), var(--sc-gold));
+    transform: translateX(-50%);
 }
 
-.seccion-servicios {
+main .text-secondary {
+    color: var(--sc-muted) !important;
+    font-size: 1.05rem;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--sc-red), var(--sc-red-dark));
+    border: none;
+    padding: 0.75rem 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    box-shadow: 0 6px 18px rgba(211, 47, 47, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(211, 47, 47, 0.55);
+    background: linear-gradient(135deg, #e53935, var(--sc-red));
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+}
+
+.card-custom {
     width: 100%;
-}
-
-.seccion-servicios .mapa-img-container {
-    background: var(--sc-bg-soft);
+    background: var(--sc-card);
     border: 1px solid var(--sc-border);
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
+    border-radius: var(--sc-radius);
+    box-shadow: var(--sc-shadow);
+    padding: 16px !important;
+    overflow: hidden;
 }
 
-.seccion-servicios .mapa-img-fluid {
-    width: 100%;
-    height: auto;
-    max-height: 480px;
-    object-fit: contain;
-    border-radius: 8px;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-    transition: transform 0.3s ease;
+.bot-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1050;
 }
 
-.seccion-servicios .mapa-img-fluid:hover {
-    transform: scale(1.02);
+.bot-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--sc-red), var(--sc-red-dark));
+    border: none;
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.bot-toggle-btn:hover {
+    transform: scale(1.08);
+}
+
+.bot-window {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 360px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    background: var(--sc-card) !important;
+    border: 1px solid var(--sc-border) !important;
+    border-radius: var(--sc-radius) !important;
+    box-shadow: var(--sc-shadow) !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.bot-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 330px;
+    background: rgba(14, 17, 22, 0.95);
+    padding: 10px 12px !important;
+}
+
+.bot-messages-container .mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.bot-messages-container span {
+    padding: 6px 10px !important;
+    line-height: 1.35;
+    font-size: 0.9rem;
 }
 
 .footer-usmp {
@@ -247,6 +315,16 @@ main {
     background: var(--sc-gold);
 }
 
+.footer-usmp .text-md-center h5::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-usmp .text-md-end h5::after {
+    left: auto;
+    right: 0;
+}
+
 .footer-links {
     list-style: none;
     margin: 0;
@@ -260,12 +338,17 @@ main {
 .footer-links a {
     color: var(--sc-muted);
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
     color: var(--sc-gold);
     padding-left: 4px;
+}
+
+.footer-promo-text {
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 800;
 }
 
 .promo-link {
@@ -282,10 +365,48 @@ main {
 .promo-link:hover {
     color: #fff;
     transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(255, 193, 7, 0.4);
 }
 
 @media (max-width: 991px) {
-    .seccion-servicios .mapa-img-fluid {
-        max-height: 350px;
+    .header-img {
+        height: 64px;
+    }
+
+    main.container-fluid {
+        padding: 2rem 1rem 2.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .header-container-3 {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .header-img {
+        height: 46px;
+    }
+
+    .header-text-center h1 {
+        letter-spacing: 1px;
+    }
+
+    .header-text-center p {
+        letter-spacing: 2px;
+    }
+
+    .bot-window {
+        width: 300px;
+        height: 400px;
+        right: -10px;
+    }
+
+    .footer-usmp h5::after,
+    .footer-usmp .text-md-center h5::after,
+    .footer-usmp .text-md-end h5::after {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
     }
 }
