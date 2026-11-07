@@ -1,0 +1,29 @@
+.seccion-contacto {
+    width: 100%;
+}
+
+.seccion-contacto .d-flex.flex-column img {
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.seccion-contacto .d-flex.flex-column img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+    .seccion-contacto .d-flex.flex-column {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center !important;
+        gap: 20px !important;
+        margin-top: 1.5rem;
+    }
+
+    .seccion-contacto .d-flex.flex-column img {
+        max-width: 110px;
+    }
+}
